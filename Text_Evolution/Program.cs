@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -76,7 +77,30 @@ namespace Text_Evolution
                 if (max == population[result].word.Length) finded = true;
             }
 
+            #region Это лучше не видеть
+            Color.LogOut("В популяции появилось нужное слово в ");
+            Color.TextOut(N.ToString());
+            Color.LogOutLine(" поколении.");
+            Color.LogOut("Если бы использовался простой алгоритм перебора, то вероятность появления \n" +
+                             "этого слова в поколении составляла бы ");
+            Color.TextOut("1/("+abc.Length + "^" + end.Length+")");
+            Color.LogOut(" или же ~ ");
+            Color.TextOut("1/("+BigPow(abc.Length, end.Length)+")");
+            Color.LogOutLine(".");
+            Color.TextOut(abc.Length.ToString());
+            Color.LogOutLine(" - количество символов алфавита.");
+            Color.TextOut(end.Length.ToString());
+            Color.LogOutLine(" - количество символов в фразе.");
+            #endregion
             Console.ReadLine();
+        }
+
+        static string BigPow(int a, int b)
+        {
+            
+            string str = BigInteger.Pow(144, 43).ToString();
+            string result = str[0] + "," + str[1] + str[2] + str[3] + "*10^" + (str.Length - 1);
+            return result;
         }
     }
 }
