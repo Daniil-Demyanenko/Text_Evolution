@@ -25,10 +25,16 @@ namespace Text_Evolution
                 population[i] = new EvolutionObject(word);
             }
 
-            while (!finded)
+            for (int i = 0; i < population.Length; i++)
+            {
+                Console.WriteLine(population[i].word);
+            }
+            Console.ReadLine();
+
+            /*while (!finded)
             {
 
-            }
+            }*/
         }
     }
 }
