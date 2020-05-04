@@ -6,22 +6,31 @@ using System.Threading.Tasks;
 
 namespace Text_Evolution
 {
-    class Color
+    static class Color
     {
-        public ConsoleColor BackLog;
-        public ConsoleColor BackText;
-        public ConsoleColor ColorLog;
-        public ConsoleColor ColorText;
+        /// <summary>
+        /// Фон для LogOut.
+        /// </summary>
+        static public ConsoleColor BackLog = ConsoleColor.Black;
+        /// <summary>
+        /// Фон для TextOut
+        /// </summary>
+        static public ConsoleColor BackText = ConsoleColor.Black;
+        /// <summary>
+        /// Цвет текста для LogOut
+        /// </summary>
+        static public ConsoleColor ColorLog = ConsoleColor.Cyan;
+        /// <summary>
+        /// Цвет текста для TextOut
+        /// </summary>
+        static public ConsoleColor ColorText = ConsoleColor.Yellow;
 
-        public Color()
-        {
-            BackText = ConsoleColor.Black;
-            BackLog = ConsoleColor.Black;
-            ColorLog = ConsoleColor.Cyan;
-            ColorText = ConsoleColor.Yellow;
-        }
 
-        public void LogOut(string text)
+        /// <summary>
+        /// Цветной вывод.
+        /// </summary>
+        /// <param name="text">Текст.</param>
+        static public void LogOut(string text)
         {
             var Back = Console.BackgroundColor;
             var Color = Console.ForegroundColor;
@@ -31,7 +40,34 @@ namespace Text_Evolution
             Console.BackgroundColor = Back;
             Console.ForegroundColor = Color;
         }
-        public void LogOutLine(string text)
+        /// <summary>
+        /// Цветной вывод с новой строки.
+        /// </summary>
+        /// <param name="text">Текст.</param>
+        static public void LogOutLine(string text)
+        {
+            LogOut(text + "\n");
+        }
+
+        /// <summary>
+        /// Цветной вывод.
+        /// </summary>
+        /// <param name="text">Текст.</param>
+        static public void TextOut(string text)
+        {
+            var Back = Console.BackgroundColor;
+            var Color = Console.ForegroundColor;
+            Console.BackgroundColor = BackText;
+            Console.ForegroundColor = ColorText;
+            Console.Write(text);
+            Console.BackgroundColor = Back;
+            Console.ForegroundColor = Color;
+        }
+        /// <summary>
+        /// Цветной вывод.
+        /// </summary>
+        /// <param name="text">Текст.</param>
+        static public void TexOutLine(string text)
         {
             LogOut(text + "\n");
         }
