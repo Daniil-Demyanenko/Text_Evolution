@@ -67,9 +67,9 @@ namespace Text_Evolution
         /// Цветной вывод.
         /// </summary>
         /// <param name="text">Текст.</param>
-        static public void TexOutLine(string text)
+        static public void TextOutLine(string text)
         {
-            LogOut(text + "\n");
+            TextOut(text + "\n");
         }
     }
 }

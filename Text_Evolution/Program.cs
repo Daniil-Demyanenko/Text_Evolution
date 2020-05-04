@@ -25,9 +25,10 @@ namespace Text_Evolution
                 population[i] = new EvolutionObject(word);
             }
 
+            Color.LogOutLine("Первое поколение:");
             for (int i = 0; i < population.Length; i++)
             {
-                Console.WriteLine(population[i].word);
+                Color.TextOutLine(population[i].word + "\n");
             }
             Console.ReadLine();
 
