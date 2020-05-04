@@ -11,10 +11,10 @@ namespace Text_Evolution
                          "abcdefghijklmnopqrstuvwxyz" + 
                          "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
                          "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
-                         " !?:;\"'().,-`~@#№$%^&*+=/\\";
+                         " !?:;\"'().,-`~@#№$%^&*+=/\\\n\t";
 
-            string end = "Семь бед - один ответ: Костыль и велосипед!"; //Фраза, которая должна получиться
-            EvolutionObject[] population = new EvolutionObject[4000]; //"Популяция" фраз
+            string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
+            EvolutionObject[] population = new EvolutionObject[800]; //"Популяция" фраз
             int k = 2; //Коэфициент количества изменений [0 ; k),  => k != 1
             int N = 0; //Номер поколения
             Random rand = new Random();
@@ -65,7 +65,7 @@ namespace Text_Evolution
                 }
 
                 word = population[result].word;
-                Color.LogOutLine("Фраза с наибольшим коэфициентом подобия (" + max + ") в популяции " + N + ":");
+                Color.LogOutLine("Фраза с наибольшим коэфициентом подобия (" + max + ") в поколении " + N + ":");
                 Color.TextOutLine(word + "\n");
                 for (int i = 0; i < population.Length; i++)// Формирование следующего поколение
                     population[i].word = word;
