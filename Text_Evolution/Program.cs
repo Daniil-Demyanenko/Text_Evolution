@@ -10,14 +10,20 @@ namespace Text_Evolution
     {
         static void Main(string[] args)
         {
-            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ !?:;\"'().,"; //Алфавит для перебора
-            string end = "HELLO, WORLD!!!"; //Фраза, которая должна получиться
-            EvolutionObject[] population = new EvolutionObject[10]; //"Популяция" фраз
-            int k = 3; //Коэфициент количества изменений
+            string abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" + //Алфавит для перебора
+                         "abcdefghijklmnopqrstuvwxyz" + 
+                         "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
+                         "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
+                         " !?:;\"'().,-`~@#№$%^&*+=/\\";
+
+            string end = "Семь бед - один ответ: Костыль и велосипед!"; //Фраза, которая должна получиться
+            EvolutionObject[] population = new EvolutionObject[4000]; //"Популяция" фраз
+            int k = 2; //Коэфициент количества изменений [0 ; k),  => k != 1
             int N = 0; //Номер поколения
             Random rand = new Random();
             bool finded = false;
 
+            if (k <= 1) k = 2;
 
             string word = "";
             for (int j = 0; j < end.Length; j++) // Формирование случайной "популяции"
@@ -28,10 +34,7 @@ namespace Text_Evolution
 
 
             Color.LogOutLine("Первое поколение:");
-            for (int i = 0; i < population.Length; i++)
-            {
-                Color.TextOutLine(population[i].word);
-            }
+            Color.TextOutLine(population[0].word);
 
             Console.WriteLine();
 
@@ -64,13 +67,16 @@ namespace Text_Evolution
                     }
                 }
 
-
                 word = population[result].word;
                 Color.LogOutLine("Фраза с наибольшим коэфициентом подобия (" + max + ") в популяции " + N + ":");
                 Color.TextOutLine(word + "\n");
+                for (int i = 0; i < population.Length; i++)// Формирование следующего поколение
+                    population[i].word = word;
 
                 if (max == population[result].word.Length) finded = true;
             }
+
+            Console.ReadLine();
         }
     }
 }
