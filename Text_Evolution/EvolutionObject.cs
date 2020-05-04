@@ -11,41 +11,41 @@ namespace Text_Evolution
         /// <summary>
         /// Фраза.
         /// </summary>
-        public string content;
+        public string word;
 
         /// <summary>
         /// Инициализация объекта.
         /// </summary>
-        /// <param name="content">Фраза.</param>
-        public EvolutionObject(string content)
+        /// <param name="word">Фраза.</param>
+        public EvolutionObject(string word)
         {
-            this.content = content;
+            this.word = word;
         }
         /// <summary>
         /// Инициальзация пустым значением
         /// </summary>
         public EvolutionObject()
         {
-            this.content = "";
+            this.word = "";
         }
 
         /// <summary>
-        /// Возвращает кофициент подобия поля content параметру.
+        /// Возвращает кофициент подобия поля word параметру.
         /// </summary>
         /// <param name="s">строка для сравнения.</param>
         /// <returns></returns>
         public int SimilarityCoefficient(string s)
         {
             int k = 0;
-            if (content.Length <= s.Length)
+            if (word.Length <= s.Length)
             {
-                for (int i = 0; i < content.Length; i++)
-                    if (content[i] == s[i]) k++;
+                for (int i = 0; i < word.Length; i++)
+                    if (word[i] == s[i]) k++;
             }
             else
             {
                 for (int i = 0; i < s.Length; i++)
-                    if (content[i] == s[i]) k++;
+                    if (word[i] == s[i]) k++;
             }
             return k;
         }
