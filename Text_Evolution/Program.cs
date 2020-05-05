@@ -11,10 +11,11 @@ namespace Text_Evolution
                          "abcdefghijklmnopqrstuvwxyz" + 
                          "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
                          "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
-                         " !?:;\"'().,-_`~@#№$%^&*+=/\\\n\t";
+                         "1234567890" +
+                         " !?:;\"'().,-_`~@#№$%^&*+=/|\\\n\t<>";
 
-            string end = "Семь бед -один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
-            EvolutionObject[] population = new EvolutionObject[30000]; //"Популяция" фраз
+            string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
+            EvolutionObject[] population = new EvolutionObject[8000]; //"Популяция" фраз
             int k = 2; //Коэфициент количества изменений [0 ; k),  => k != 1
             int N = 0; //Номер поколения
             Random rand = new Random();
