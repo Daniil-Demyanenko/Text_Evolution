@@ -14,14 +14,17 @@ namespace Text_Evolution
                          "1234567890" +
                          " !?:;\"'().,-_`~@#№$%^&*+=/|\\\n\t<>";
 
-            string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
+            //string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
+            string end = "Мы,\nонанисты,\nребята\nплечисты!\nНас\nне заманишь\nтитькой мясистой!\nНе\nсовратишь нас\nп*здовою\nплевой!\nКончил\nправой,\nработай левой!!!";
             EvolutionObject[] population = new EvolutionObject[8000]; //"Популяция" фраз
-            int k = 2; //Коэфициент количества изменений [0 ; k),  => k != 1
+            int k0 = 0; //Нижняя граница коэфициента количества изменений
+            int k1 = 1; //Верхняя граница коэфициента кол-ва изменений [k0 ; k1],  => k0 < k1
             int N = 0; //Номер поколения
             Random rand = new Random();
             bool finded = false;
 
-            if (k <= 1) k = 2;
+            k1++;
+            if (k0 > k1) { int k = k0; k0 = k1; k1 = k; }
 
             string word = "";
             for (int j = 0; j < end.Length; j++) // Формирование случайной "популяции"
@@ -40,11 +43,11 @@ namespace Text_Evolution
             while (!finded)
             {
                 N++;//Увеличение номера поколения
-                int changes = rand.Next(k);
+                int changes = rand.Next(k0, k1);
 
                 for (int i = 1; i < population.Length; i++) // Формирование случайных изменений
                 {
-                    for (int f = 0; f <= changes; f++)
+                    for (int f = 0; f < changes; f++)
                     {
                         word = population[i].word;
                         int r = rand.Next(word.Length);
