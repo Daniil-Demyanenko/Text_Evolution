@@ -96,7 +96,7 @@ namespace Text_Evolution
         static string BigPow(int a, int b)
         {
             
-            string str = BigInteger.Pow(144, 43).ToString();
+            string str = BigInteger.Pow(a, b).ToString();
             string result = str[0] + "," + str[1] + str[2] + str[3] + "*10^" + (str.Length - 1);
             return result;
         }
