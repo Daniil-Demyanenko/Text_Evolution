@@ -40,10 +40,9 @@ namespace Text_Evolution
             while (!finded)
             {
                 N++;//Увеличение номера поколения
-                int max = population[0].SimilarityCoefficient(end);
                 int changes = rand.Next(k);
 
-                for (int i = 0; i < population.Length; i++) // Формирование случайных изменений
+                for (int i = 1; i < population.Length; i++) // Формирование случайных изменений
                 {
                     for (int f = 0; f <= changes; f++)
                     {
@@ -55,6 +54,8 @@ namespace Text_Evolution
                     }
                 }
 
+
+                int max = population[0].SimilarityCoefficient(end);
                 for (int i = 0; i < population.Length; i++) //нахождение наибольшего коэфициента подобия
                 {
                     int temp = population[i].SimilarityCoefficient(end);
