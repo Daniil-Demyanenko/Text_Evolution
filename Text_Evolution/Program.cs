@@ -12,14 +12,15 @@ namespace Text_Evolution
                          "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
                          "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
                          "1234567890" +
-                         " !?:;\"'().,-_`~@#№$%^&*+=/|\\\n\t<>";
+                         " !?:;\"'().,-—_`~@#№$%^&*+=/|\\\n\t<>";
 
-            //string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
-            string end = "Мы,\nонанисты,\nребята\nплечисты!\nНас\nне заманишь\nтитькой мясистой!\nНе\nсовратишь нас\nп*здовою\nплевой!\nКончил\nправой,\nработай левой!!!";
+            string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!\n-\n" +    //Фраза, которая должна получиться
+                        "\nMicrosoft — не зло, просто у них по-настоящему паршивые операционные системы.\n" +
+                        "(c)Линус Торвальдс";   
             EvolutionObject[] population = new EvolutionObject[8000]; //"Популяция" фраз
-            int k0 = 0; //Нижняя граница коэфициента количества изменений
-            int k1 = 1; //Верхняя граница коэфициента кол-ва изменений [k0 ; k1],  => k0 < k1
-            int N = 0; //Номер поколения
+            int k0 = 1; //Нижняя граница коэфициента количества изменений
+            int k1 = 2; //Верхняя граница коэфициента кол-ва изменений [k0 ; k1],  => k0 < k1
+            int N = 0;  //Номер поколения
             Random rand = new Random();
             bool finded = false;
 
@@ -62,7 +63,7 @@ namespace Text_Evolution
                 for (int i = 0; i < population.Length; i++) //нахождение наибольшего коэфициента подобия
                 {
                     int temp = population[i].SimilarityCoefficient(end);
-                    if (temp > max)
+                    if (temp >= max)
                     {
                         max = temp;
                         result = i;
@@ -71,7 +72,7 @@ namespace Text_Evolution
 
                 word = population[result].word;
 
-                Color.LogOutLine("Фраза с наибольшим коэфициентом подобия (" + max + ") в поколении " + N + ":");
+                Color.LogOutLine("Фраза с наибольшим коэфициентом подобия (" + max + " из " + end.Length + ") в поколении " + N + ":");
                 Color.TextOutLine(word + "\n");
                 for (int i = 0; i < population.Length; i++)// Формирование следующего поколение
                     population[i].word = word;
