@@ -24,10 +24,33 @@ namespace Text_Evolution
             Random rand = new Random();
             bool finded = false;
 
+            //Ввод данных
+            Color.LogOutLine("Введите текст, к которому должна прийти программа, или просто нажмите Enter, \nчтоб использовать все настройки по умолчанию.");
+            Color.LogOutLine("Текст можно вводить построчно, пока небудет нажат Enter на пустой строке.");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            string word = Console.ReadLine();
+            if (word != "")
+            {
+                string temp;
+                while (true)
+                {
+                    temp = Console.ReadLine();
+                    if (temp == "") break;
+                    word += "\n" + temp;
+                }
+                Color.LogOutLine("Введите через пробел нижнюю и верхнюю границы коэфициента количества изменений текста [k0 ; k1]");
+                temp = Console.ReadLine();
+                char[] charSeparators = new char[] { ' ' };
+                k0 = int.Parse(temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries)[0]);
+                k1 = int.Parse(temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries)[1]);
+                end = word;
+            }
+
+
             k1++;
             if (k0 > k1) { int k = k0; k0 = k1; k1 = k; }
 
-            string word = "";
+            word = "";
             for (int j = 0; j < end.Length; j++) // Формирование случайной "популяции"
                 word += abc[rand.Next(abc.Length)];
 
