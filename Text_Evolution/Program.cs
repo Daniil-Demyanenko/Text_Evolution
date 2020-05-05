@@ -11,10 +11,10 @@ namespace Text_Evolution
                          "abcdefghijklmnopqrstuvwxyz" + 
                          "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ" +
                          "абвгдеёжзийклмнопрстуфхцчшщъыьэюя" +
-                         " !?:;\"'().,-`~@#№$%^&*+=/\\\n\t";
+                         " !?:;\"'().,-_`~@#№$%^&*+=/\\\n\t";
 
-            string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
-            EvolutionObject[] population = new EvolutionObject[800]; //"Популяция" фраз
+            string end = "Семь бед -один ответ: Костыль и велосипед!\nHello World!!!"; //Фраза, которая должна получиться
+            EvolutionObject[] population = new EvolutionObject[30000]; //"Популяция" фраз
             int k = 2; //Коэфициент количества изменений [0 ; k),  => k != 1
             int N = 0; //Номер поколения
             Random rand = new Random();
@@ -65,6 +65,7 @@ namespace Text_Evolution
                 }
 
                 word = population[result].word;
+
                 Color.LogOutLine("Фраза с наибольшим коэфициентом подобия (" + max + ") в поколении " + N + ":");
                 Color.TextOutLine(word + "\n");
                 for (int i = 0; i < population.Length; i++)// Формирование следующего поколение
@@ -74,7 +75,7 @@ namespace Text_Evolution
             }
 
             #region Это лучше не видеть
-            Color.LogOut("В популяции появилось нужное слово в ");
+            Color.LogOut("В популяции появилась нужная фраза в ");
             Color.TextOut(N.ToString());
             Color.LogOutLine(" поколении.");
             Color.LogOut("Если бы использовался простой алгоритм перебора, то вероятность появления \n" +
