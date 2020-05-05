@@ -16,7 +16,7 @@ namespace Text_Evolution
 
             string end = "Семь бед - один ответ: Костыль и велосипед!\nHello World!!!\n-\n" +    //Фраза, которая должна получиться
                         "\nMicrosoft — не зло, просто у них по-настоящему паршивые операционные системы.\n" +
-                        "(c)Линус Торвальдс";   
+                        "(c)Линус Торвальдс";
             EvolutionObject[] population = new EvolutionObject[8000]; //"Популяция" фраз
             int k0 = 1; //Нижняя граница коэфициента количества изменений
             int k1 = 2; //Верхняя граница коэфициента кол-ва изменений [k0 ; k1],  => k0 < k1
@@ -44,6 +44,9 @@ namespace Text_Evolution
                 k0 = int.Parse(temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries)[0]);
                 k1 = int.Parse(temp.Split(charSeparators, StringSplitOptions.RemoveEmptyEntries)[1]);
                 end = word;
+                Color.LogOut("Введите размер популяции (рекомендовано 8000)");
+                int temp_int = int.Parse(Console.ReadLine());
+                population = new EvolutionObject[temp_int];
             }
 
 
